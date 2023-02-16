@@ -28,9 +28,9 @@ app.get('/', (req, res) => { // serves up the button.html
 
 io.on('connection', (socket) => { // establishes the initil socket connection
   socket.join("room");
-  socket.to("room").emit("poke", () => {
-    console.log('joiined the room and poke was triggered')
-  });
+  // socket.to("room").emit("poke", () => {
+  //   console.log('joiined the room and poke was triggered')
+  // });
 
   console.log(socket.id, 'has connected');
   console.log(io.engine.clientsCount);
@@ -41,13 +41,13 @@ io.on('connection', (socket) => { // establishes the initil socket connection
     console.log("d/c", socket.id);
   })
 
-  socket.on('poke', () => {
+  socket.on('poke', (msg) => {
     // io.in('room').clients((err , clients) => {
     //   // clients will be array of socket ids , currently available in given room
     //   console.log('clients array', clients);
     // });
     // console.log('array?', io.fetchSockets())
-    console.log('poked by', id)
+    console.log('your poke is: ', msg)
     console.log("Hello")
     
     // iterate thru array of current cxns, randomly choose one

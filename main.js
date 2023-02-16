@@ -8,7 +8,7 @@ console.log('THIS IS IO: ', io);
 const socket = io('http://localhost:3000');
 // console.log('THIS IS socket: ', socket);
 
-socket.to('room').emit("poke", "Roses are red. Violets are blue. There's a missing [ on line 32.");
+socket.emit("poke", "Roses are red. Violets are blue. There's a missing [ on line 32.");
  
 
 // document.addEventListener('DOMContentLoaded', () => {
