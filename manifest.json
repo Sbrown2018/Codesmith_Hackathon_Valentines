@@ -11,7 +11,7 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["./main.js"],
+      "js": ["./build/bundle.js"],
       "css": ["./styles.css"]
     }
   ],

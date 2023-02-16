@@ -1,10 +1,28 @@
 // This file is where we need to deploy connections and requestcosn
-//const io = require("/socket.io/socket.io.js"); // what is this path?
+const io = require("./socket.io.js"); // what is this path?
 // const io = require("https://cdn.socket.io/4.5.4/socket.io.min.js"); // importing through CDN
 // import io from "/socket.io/socket.io.js";
 // const socket = io();
 
+console.log('THIS IS IO: ', io);
+const socket = io('http://localhost:3000');
+// console.log('THIS IS socket: ', socket);
 
+socket.to('room').emit("poke", "Roses are red. Violets are blue. There's a missing [ on line 32.");
+ 
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   const button = document.querySelector('#send');
+//   console.log(button);
+//   button.onclick = () => {
+//     // send the message here using socketio client api
+//     console.log('you clicked me');
+//     //an alert as a hacky way to have a message appear
+//     alert("Roses are red. Violets are blue. There's a missing [ on line 32.")
+//   }
+
+//   console.log('hi in MAIN.js');
+// })
 // console.log(socket);
 
 // fetch('http://localhost:3000/socket.io/socket.io.js', {mode: 'no-cors' })
@@ -18,11 +36,15 @@
 //   })
 
 // (async () => {
-//   const io = await fetch('http://localhost:3000/socket.io/socket.io.js', {mode: 'no-cors' });
-//   // const socket = io();
+//   const res = await fetch('http://localhost:3000/socket.io/socket.io.js', {mode: 'no-cors' });
+//   const io = res.text();
 
-//   console.log('this is io', io);
-//   console.log('this is socket', socket);
+//   console.log(res);
+
+//   // const socket = io()
+
+//   // console.log('this is io', io);
+//   // console.log('this is socket', socket);
 // })()
 
 // These messages should be sent to someone random (who is also using the extension)
@@ -38,10 +60,6 @@
 // TLDR: automatic connection to server when extension is open (user can still choose to deactivate the extension). Then when extension button is clicked, a message is sent (post request) to a random fellow extension user
 
 
-document.addEventListener('DOMContentLoaded', () => {
-  
-  console.log('hi in MAIN.js');
-})
 
 
 // const script = document.createElement('script');
@@ -53,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Create a new script element
 // const script = document.createElement('script');
 
-// // Set the src attribute to the socket.io.js file
+// // // Set the src attribute to the socket.io.js file
 // script.src = 'http://localhost:3000/socket.io/socket.io.js';
 // script.async = true;
 
@@ -73,4 +91,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
+module.exports = socket;
